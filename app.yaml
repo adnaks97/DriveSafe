@@ -1,0 +1,22 @@
+runtime: python
+env: flex
+# Use a special gunicorn worker class to support websockets.
+entrypoint: gunicorn -b :$PORT -k flask_sockets.worker main:app
+runtime_config:
+  python_version: 3
+
+beta_settings:
+  cloud_sql_instances: drivesafeapp:us-west2:drivesafe-app-db
+
+env_variables: # Lookup credentials
+  CLOUD_SQL_USERNAME:
+  CLOUD_SQL_PASSWORD:
+  CLOUD_SQL_DATABASE_NAME: drivesafe_app_accidents
+  CLOUD_SQL_CONNECTION_NAME: drivesafeapp:us-west2:drivesafe-app-db
+  APP_ENV_VAR: gae
+
+manual_scaling:
+  instances: 1
+
+# network:
+#   session_affinity: true

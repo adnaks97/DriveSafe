@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Vehicle Live Movement on Maps</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript"
+    src="https://maps.google.com/maps/api/js?key=AIzaSyAbgPd852o0woEvhxbiJLEEvSGL7-L9eY8"></script>
+    <script type ="text/javascript" src="http://www.geocodezip.com/scripts/v3_epoly.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='script.js') }}"></script>
+  </head>
+  <body onload="initialize()">
+    <div id="tools" style="display: inline-block;">
+      <h4>Please enter locations and hit start to get started</h4>
+      <input id="start" value="santa monica" />
+      <input id="end" value="beverly hills" />
+      <p> enter the speed in miles: </p>
+      <input id="miles" value="60" />
+      <div id="error-msg"></div>
+      <button id="start-btn" onclick="setRoutes();">Start</button>
+      <button id="reset-btn" onclick="location.reload()">Reset</button>
+    </div>
+    <div style="display: inline-block">
+      <div class="text " style="background-color: green;font-size: xx-large;color: white;">Safe to drive!</div>
+    </div>
+    <div id="map_canvas" style="width:100%;height:100%;"></div>
+  </body>
+</html>
